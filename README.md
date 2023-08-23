@@ -1,4 +1,4 @@
-# trab3web2
+# SPAC (Sistema Para Atividades Complementares)
 
 Instruções para execução:
 
