@@ -36,7 +36,7 @@ Finalmente, executar o projeto:
 ```
 python manage.py runserver
 ```
-Para adicionar, editar ou excluir os models (Alunos, Disciplinas, Matrículas e Turmas), acessar o seguinte endereço:
+Para adicionar, editar ou excluir os models, acessar o seguinte endereço:
 
 http://127.0.0.1:8000/admin/
 
