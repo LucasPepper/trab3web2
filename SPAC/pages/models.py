@@ -58,7 +58,7 @@ class AC(models.Model):
     carga_horaria = models.IntegerField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="ANÁLISE") #choices  APROVADO, ANÁLISE, RECUSADO
     descricao = models.CharField(max_length=200, default="")
-    certificado = models.FileField() # Somente PDF
+    certificado = models.FileField(upload_to='certifications/') # Somente PDF
 
     def __str__(self):
         return f'AC: {self.categoria}, ALUNO: {self.aluno}, STATUS: {self.status} '
