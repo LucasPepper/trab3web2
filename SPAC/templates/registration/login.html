@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Seus dados não conferem. Por favor tente novamente.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Você não tem acesso a essa página. Por favor, faça o login.</p>
+    {% else %}
+      <p>Por favor, faça o login para ter acesso a essa página.</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="Login">
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+
+{% endblock %}

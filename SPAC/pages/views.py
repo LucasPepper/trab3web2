@@ -1,10 +1,23 @@
 from django.shortcuts import render
 
-from .models import CategoriaAc
+from django.http import HttpResponseRedirect
 
-# from .forms import FileFieldForm
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+from .models import CategoriaAc, AC
+
+from .forms import ACForm
+
+def ac_ListView(request, *args, **kwargs):
+    print(args, kwargs)
+    print(request.user)
+
+    queryset = AC.objects.all()
+    queryset = queryset.order_by("descricao")
+    context = {
+        "ac_list": queryset
+    }
+    return render(request, "ac_list.html", context)
 
 def categorias_ac_ListView(request, *args, **kwargs):
     print(args, kwargs)
@@ -17,21 +30,29 @@ def categorias_ac_ListView(request, *args, **kwargs):
     }
     return render(request, "categorias_ac.html", context)
 
-# class FileFieldView(FormView):
-#     form_class = FileFieldForm
-#     template_name = 'upload.html'  # Replace with your template.
-#     success_url = '...'  # Replace with your URL or reverse().
+@login_required
+def ac_create_view(request):
+    if request.method == "POST":
+        form = ACForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(form.cleaned_data)
+            form.save()
 
-#     def post(self, request, *args, **kwargs):
-#         form_class = self.get_form_class()
-#         form = self.get_form(form_class)
-#         files = request.FILES.getlist('file_field')
-#         if form.is_valid():
-#             for f in files:
-#                 ...  # Do something with each file.
-#             return self.form_valid(form)
-#         else:
-#             return self.form_invalid(form)
+            # redirect to a new URL:
+            return HttpResponseRedirect('/')
+            
+        else:
+            print(form.errors)
+        
+    form = ACForm()
 
-def cadastro_ac(request):
-    return render(request, 'cadastro_ac.html')
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
+    context = {
+        "form": form,
+        "num_visits": num_visits
+    }
+    return render(request, "cadastro_ac.html", context)
+

@@ -52,12 +52,13 @@ class CategoriaAc(models.Model):
     
 class AC(models.Model):
     # pk = ID
-    categoria = models.ForeignKey(CategoriaAc, on_delete=models.DO_NOTHING) # Relacionamento? 1 para 1
-    aluno = models.ForeignKey(Aluno, on_delete=models.DO_NOTHING) # 1 para N
-    coordenador = models.ForeignKey(Coordenador, on_delete=models.DO_NOTHING) # 1 para N
-    carga_horaria = models.DecimalField(max_digits=3, decimal_places=1)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES) #choices  APROVADO, ANÁLISE, RECUSADO
-    comprovante = models.FileField() # Somente PDF
+    categoria = models.ForeignKey(CategoriaAc, on_delete=models.PROTECT) # Relacionamento? 1 para 1
+    aluno = models.ForeignKey(Aluno, on_delete=models.PROTECT) # 1 para N
+    coordenador = models.ForeignKey(Coordenador, on_delete=models.PROTECT) # 1 para N
+    carga_horaria = models.IntegerField()
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="ANÁLISE") #choices  APROVADO, ANÁLISE, RECUSADO
+    descricao = models.CharField(max_length=200, default="")
+    certificado = models.FileField() # Somente PDF
 
     def __str__(self):
         return f'AC: {self.categoria}, ALUNO: {self.aluno}, STATUS: {self.status} '
