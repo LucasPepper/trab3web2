@@ -8,6 +8,7 @@ from .models import CategoriaAc, AC
 
 from .forms import ACForm
 
+@login_required
 def ac_ListView(request, *args, **kwargs):
     print(args, kwargs)
     print(request.user)

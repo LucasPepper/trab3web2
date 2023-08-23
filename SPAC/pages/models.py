@@ -55,10 +55,10 @@ class AC(models.Model):
     categoria = models.ForeignKey(CategoriaAc, on_delete=models.PROTECT) # Relacionamento? 1 para 1
     aluno = models.ForeignKey(Aluno, on_delete=models.PROTECT) # 1 para N
     coordenador = models.ForeignKey(Coordenador, on_delete=models.PROTECT) # 1 para N
-    carga_horaria = models.IntegerField()
+    carga_horaria = models.IntegerField("Carga Horária")
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="ANÁLISE") #choices  APROVADO, ANÁLISE, RECUSADO
-    descricao = models.CharField(max_length=200, default="")
-    certificado = models.FileField(upload_to='certifications/') # Somente PDF
+    descricao = models.CharField("Descrição", max_length=200, default="")
+    certificado = models.FileField(upload_to='static/certifications/') # Somente PDF
 
     def __str__(self):
         return f'AC: {self.categoria}, ALUNO: {self.aluno}, STATUS: {self.status} '

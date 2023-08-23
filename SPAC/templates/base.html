@@ -22,7 +22,7 @@
                 <div class="container-md">
                     <a class="navbar-brand p-0" href="{% url 'categorias_ac' %}" style="color: #2c3f1f;">
                         <img src="{% static '/images/logo.png' %}" alt="Logo da aplicação" width="50">
-                        SPAC - Sistema Para Atividades-Complementares
+                        SPAC - Sistema Para Atividades Complementares
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +41,14 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="https://bsijanuaria.notion.site/Atividades-Complementares-0f4602239b3e4965abd102cb169ecc61" target="_blank"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+                            </li>
+                            <li class="nav-item">
+                                {% if user.is_authenticated %}
+                                    <a class="nav-link" href="{% url 'logout' %}?next={{ request.path }}" target="_self"><i class="fa-solid fa fa-sign-out"></i> Logout</a>
+                                {% else %}
+                                    <a class="nav-link" href="{% url 'login' %}?next={{ request.path }}" target="_self"><i class="fa-solid fa fa-sign-in"></i> Login</a>
+                                {% endif %}
+                              </ul>
                             </li>
                         </ul>
                     </div>
