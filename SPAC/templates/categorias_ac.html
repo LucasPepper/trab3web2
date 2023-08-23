@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %} Categorias AC {% endblock %}
+
+{% block content %}
+    <h6><i class="fa-solid fa-file-lines"></i> Catálogo de Atividades Complementares </h6>
+
+    <div class="card mb-3">
+        <div class="card-header bg-white">
+            Atividades Complementares
+        </div>
+
+        <div class="card-body d-flex justify-content-around pt-4 pb-5">
+            <a href="#" class="btn btn-warning col-sm-5 p-5 pt-3 pb-3" style="text-align: left;">
+                <i class="fa-solid fa-hourglass-start"></i> Em Análise
+            </a>
+
+            <a href="#" class="btn btn-success col-sm-5 p-5 pt-3 pb-3" style="text-align: left;">
+                <i class="fa-solid fa-file-circle-check"></i> Concluídos
+            </a>
+        </div>
+    </div>
+
+    <div class="card mb-5">
+        <div class="card-header bg-white">
+            Cadastro de Atividades Complementares
+        </div>
+
+        <div>
+            <nav class="navbar navbar-light bg-white">
+                <form class="form-inline w-100 d-flex justify-content-center pt-4 pb-2">
+                    <input id="search" class="form-control" type="search" placeholder="Digite a palavra chave aqui" aria-label="Search" style="max-width: 50rem;">
+                    <button id="btn-search" class="btn btn-outline-secondary my-2 my-sm-0" type="button">
+                        <i class="fa-solid fa-magnifying-glass"></i> 
+                    </button>
+                </form>
+              </nav>
+        </div>
+        <hr>
+
+        <div class="d-flex justify-content-between flex-wrap" style="padding: 0 15%;">
+            {% for categorias in categorias_ac_list %}
+                <a href="#" class="content link-secondary m-1 col-sm-3 mb-3" style="text-decoration: none;">
+                    <div class="card rounded-1 w-100 pt-2 pb-2" style="background-color: #e0e0e0; min-height: 5rem;">
+                        <div class="card-body d-flex">
+                            <span class="bg-light" style="padding: 5%; margin-right: 15px;">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </span>
+                            <p>{{ categorias.descricao }}</p>
+                        </div>
+                    </div>
+                </a>
+
+            {% empty %}
+                <div class="card w-100 m-5 bg-light text-center">
+                    <div class="card-body">
+                        Não há categorias cadastradas.
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function() {
+            $("#search").on("keydown", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                }
+            });
+
+            $("#search").focusout(function() {
+                if ($(this).val() === '')
+                    $('.content').show();
+            });
+
+            $("#btn-search").click(function() {
+                var search = $("#search").val().toLowerCase();
+                
+                $(".content").each(function() {
+                    var textoElemento = $(this).text().toLowerCase();
+                    
+                    if (textoElemento.indexOf(search) > -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

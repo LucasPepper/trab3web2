@@ -1,0 +1,127 @@
+[
+    {
+      "model": "pages.categoriaAC",
+      "pk": 1,
+      "fields": {
+        "descricao": "Autor ou coautor de artigo científico completo publicado em revista",
+        "carga_horaria_maxima": "60"
+      }
+    },
+    {
+      "model": "pages.categoriaAC",
+      "pk": 2,
+      "fields": {
+        "descricao": "Autor ou coautor de trabalho científico publicado em eventos científicos",
+        "carga_horaria_maxima": "30"
+      }
+    },
+    {
+        "model": "pages.categoriaAC",
+        "pk": 3,
+        "fields": {
+          "descricao": "Carga horária optativa excedente",
+          "carga_horaria_maxima": "20"
+        }
+    },
+    {
+        "model": "pages.categoriaAC",
+        "pk": 4,
+        "fields": {
+          "descricao": "Curso de Libras",
+          "carga_horaria_maxima": "40"
+        }
+    },
+    {
+        "model": "pages.categoriaAC",
+        "pk": 5,
+        "fields": {
+          "descricao": "Estágio extracurricular vinculado à área do curso",
+          "carga_horaria_maxima": "40"
+        }
+    },
+    {
+        "model": "pages.categoriaAC",
+        "pk": 6,
+        "fields": {
+          "descricao": "Instrutor em cursos, minicursos ou oficinas",
+          "carga_horaria_maxima": "30"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 7,
+        "fields": {
+          "descricao": "Monitoria reconhecida pelo IFNMG",
+          "carga_horaria_maxima": "60"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 8,
+        "fields": {
+          "descricao": "Palestrantes em congressos, seminários, simpósios, conferências, fóruns, workshops, semanas de curso, etc",
+          "carga_horaria_maxima": "40"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 9,
+        "fields": {
+          "descricao": "Participação como membro de comissão organizadora de eventos científicos ou extensão",
+          "carga_horaria_maxima": "15"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 10,
+        "fields": {
+          "descricao": "Participação em Eventos - congressos, seminários, simpósios, conferências, fóruns, workshops, semana de curso, etc",
+          "carga_horaria_maxima": "30"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 11,
+        "fields": {
+          "descricao": "Participação em Maratonas de Programação",
+          "carga_horaria_maxima": "30"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 12,
+        "fields": {
+          "descricao": "Participação em Projetos de Pesquisa / Iniciação Científica aprovada e concluída",
+          "carga_horaria_maxima": "50"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 13,
+        "fields": {
+          "descricao": "Participação em programa de Estágio voluntário no IFNMG",
+          "carga_horaria_maxima": "40"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 14,
+        "fields": {
+          "descricao": "Participação em projetos de consultoria",
+          "carga_horaria_maxima": "15"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 15,
+        "fields": {
+          "descricao": "Participação em Órgãos Colegiados",
+          "carga_horaria_maxima": "15"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 16,
+        "fields": {
+          "descricao": "Premiação em Trabalhos Acadêmicos",
+          "carga_horaria_maxima": "30"
+        }
+    },    {
+        "model": "pages.categoriaAC",
+        "pk": 17,
+        "fields": {
+          "descricao": "Visitas Técnicas",
+          "carga_horaria_maxima": "20"
+        }
+    }
+]
