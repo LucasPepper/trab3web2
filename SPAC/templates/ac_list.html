@@ -39,6 +39,7 @@
         <hr>
 
         <div class="d-flex justify-content-between flex-wrap" style="padding: 0 15%;">
+            {% with horas_total=0 %}
             {% for ac in ac_list %}
                 <a href="#" class="content link-secondary m-1 col-sm-3 mb-3" style="text-decoration: none;">
                     <div class="card rounded-1 w-100 pt-2 pb-2" style="background-color: #e0e0e0; min-height: 5rem;">
@@ -46,19 +47,27 @@
                             <span class="bg-light" style="padding: 5%; margin-right: 15px;">
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </span>
-                            <p>{{ ac.descricao }}</p>
-                            <p>{{ ac }}</p>
+                            <p>{{ ac }} <b>{{ ac.carga_horaria }} Horas</b></p>
+                                {{ horas_total|add:ac.carga_horaria }}
+                                <b> {{ horas_total }} = {{ horas_total|add:3 }}</b>
+                                <h1>HTotal = {{ horas_total }}</h1>
+                                <!-- <b>>{{ 2|add:3 }}</b> -->
+
+                            <p></p>
                         </div>
                     </div>
                 </a>
 
-            {% empty %}
-                <div class="card w-100 m-5 bg-light text-center">
-                    <div class="card-body">
-                        Não há categorias cadastradas.
-                    </div>
-                </div>
             {% endfor %}
+
+            <div class="card w-100 m-5 bg-light text-center">
+                <div class="card-body">            
+                    <p><b>Total de Horas: {{ horas_total }} horas</b></p>
+                </div>
+            </div>
+
+            {% endwith %}
+
         </div>
     </div>
 {% endblock %}

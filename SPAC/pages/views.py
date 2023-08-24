@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from django.contrib import messages
+
 from django.http import HttpResponseRedirect
 
 from django.contrib.auth.decorators import login_required
@@ -40,10 +42,12 @@ def ac_create_view(request):
             form.save()
 
             # redirect to a new URL:
-            return HttpResponseRedirect('/')
+            messages.success(request, 'AC Cadastrada com Sucesso.')
+            return HttpResponseRedirect('/ac_list/')
             
         else:
             print(form.errors)
+            messages.error(request, 'Algo deu errado. Tente novamente')
         
     form = ACForm()
 

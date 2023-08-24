@@ -8,7 +8,6 @@ class ACForm(forms.ModelForm):
         fields = [
             'categoria',
             'aluno',
-            'coordenador',
             'carga_horaria',
             'descricao',
             'certificado'
