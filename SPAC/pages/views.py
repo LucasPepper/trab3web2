@@ -19,8 +19,12 @@ def ac_ListView(request, *args, **kwargs):
 
     queryset = AC.objects.all()
     queryset = queryset.order_by("descricao")
+
+    aluno = AC.objects.get(id = 1)
+    total_horas = aluno.somar_total_horas_aluno(1)
     context = {
-        "ac_list": queryset
+        "ac_list": queryset,
+        "total_horas": total_horas
     }
     return render(request, "ac_list.html", context)
 

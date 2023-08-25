@@ -56,10 +56,12 @@ class AC(models.Model):
         return f'AC: {self.categoria}, ALUNO: {self.aluno}, STATUS: {self.status} '
     
     def somar_total_horas_aluno(self, id):
-        ac_list = AC.objects.get(pk = id)
+        # List ACs
+        ac_list = AC.objects.all()
         total_horas = 0
         for ac in ac_list:
-            total_horas += ac.carga_horaria
+            if ac.pk == id:
+                total_horas += ac.carga_horaria
         return total_horas
     
     def somar_total_horas_categoria(self, categoria, id):
