@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 from .models import CategoriaAc, AC
 
+from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
+
 from .forms import ACForm
 
 @login_required
@@ -34,11 +36,20 @@ def categorias_ac_ListView(request, *args, **kwargs):
     return render(request, "categorias_ac.html", context)
 
 @login_required
+# Deve pegar o usuário e cadastrar
 def ac_create_view(request):
     if request.method == "POST":
         form = ACForm(request.POST, request.FILES)
         if form.is_valid():
             print(form.cleaned_data)
+            
+            try:
+                form.full_clean()
+            except ValidationError as e:
+                # Do something based on the errors contained in e.message_dict.
+                # Display them to a user, or handle them programmatically.
+                non_field_errors = e.message_dict[NON_FIELD_ERRORS]
+
             form.save()
 
             # redirect to a new URL:
