@@ -17,8 +17,22 @@ def ac_ListView(request, *args, **kwargs):
 
     queryset = AC.objects.all()
     queryset = queryset.order_by("descricao")
+
+    total_horas = 0
+
+    for ac in queryset:
+        total_horas += ac.carga_horaria
+
+    progresso_horas = round( (total_horas / 120) * 100 , 1)
+    if progresso_horas > 100:
+        progresso_horas = 100
+
+
     context = {
-        "ac_list": queryset
+        "ac_list": queryset,
+        "total_horas": total_horas,
+        "progresso_horas": progresso_horas
+
     }
     return render(request, "ac_list.html", context)
 

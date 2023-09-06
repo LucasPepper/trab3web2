@@ -48,10 +48,6 @@
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </span>
                             <p>{{ ac }} <b>{{ ac.carga_horaria }} Horas</b></p>
-                                {{ horas_total|add:ac.carga_horaria }}
-                                <b> {{ horas_total }} = {{ horas_total|add:3 }}</b>
-                                <h1>HTotal = {{ horas_total }}</h1>
-                                <!-- <b>>{{ 2|add:3 }}</b> -->
 
                             <p></p>
                         </div>
@@ -62,7 +58,8 @@
 
             <div class="card w-100 m-5 bg-light text-center">
                 <div class="card-body">            
-                    <p><b>Total de Horas: {{ horas_total }} horas</b></p>
+                    <p><b>Total: {{ total_horas }} horas</b></p>
+                    <p><b>Progresso: {{ total_horas }} / 120 ({{ progresso_horas }}&#37;)</b></p>
                 </div>
             </div>
 
