@@ -1,0 +1,13 @@
+[
+    {
+      "model": "pages.aluno",
+      "pk": 1,
+      "fields": {
+        "nome": "Aluno",
+        "email": "aluno@email.com",
+        "senha": "123",
+        "genero": "MASCULINO",
+        "cod_matricula": "1"
+      }
+    }
+]

@@ -27,7 +27,6 @@ def ac_ListView(request, *args, **kwargs):
     if progresso_horas > 100:
         progresso_horas = 100
 
-
     context = {
         "ac_list": queryset,
         "total_horas": total_horas,
