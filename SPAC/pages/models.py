@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 
 STATUS_CHOICES = (
     ('Aprovado', 'APROVADO'),
@@ -12,7 +13,49 @@ GENERO_CHOICES = (
     ('Prefiro não informar', 'PREFIRO NÃO INFORMAR'),
 )
 
-# Create your models here.
+class UserManager(BaseUserManager):
+    def create_user(self, login, password=None):
+        """
+        Creates and saves a User with the given email and password.
+        """
+        user = self.model(
+            login="test", password="123"
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_staffuser(self, email, password):
+        """
+        Creates and saves a staff user with the given email and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+        )
+        user.staff = True
+        user.save(using=self._db)
+        return user
+
+def create_superuser(self, email, password):
+        """
+        Creates and saves a superuser with the given email and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+        )
+        user.staff = True
+        user.admin = True
+        user.save(using=self._db)
+        return user
+
+class User(AbstractBaseUser):
+    pass
+
+    objects = UserManager()
+
 class Pessoa(models.Model): # Classe Mãe
     nome = models.CharField(max_length=100)
     email = models.EmailField(max_length=30) # Email institucional, ex:  lpds1@aluno.ifnmg.edu.br
