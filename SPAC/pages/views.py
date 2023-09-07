@@ -27,10 +27,14 @@ def ac_ListView(request, *args, **kwargs):
     if progresso_horas > 100:
         progresso_horas = 100
 
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
     context = {
         "ac_list": queryset,
         "total_horas": total_horas,
-        "progresso_horas": progresso_horas
+        "progresso_horas": progresso_horas,
+        "num_visits": num_visits
 
     }
     return render(request, "ac_list.html", context)
@@ -41,8 +45,13 @@ def categorias_ac_ListView(request, *args, **kwargs):
 
     queryset = CategoriaAc.objects.all()
     queryset = queryset.order_by("descricao")
+
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
     context = {
-        "categorias_ac_list": queryset
+        "categorias_ac_list": queryset,
+        "num_visits": num_visits
     }
     return render(request, "categorias_ac.html", context)
 
